@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Index page{% endblock %}
+
+{% block body %}
+{% if delete %}
+<div class="alert alert-danger" role="alert">
+    {{delete}}
+  </div>
+
+{% endif %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for x in task  %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{x.title}}</td>
+            <td>{{x.description}}</td>
+            <td>{% if x.is_completed %}
+                <span class="text-success">completed<span>
+                {% else %}
+                <span class="text-danger">pending<span>
+                {% endif %}
+
+
+            </td>
+            <td>
+                <a href="/task/{{x.id}}" class="btn btn-primary">Mark</a>
+            </td>
+            <td>
+                <a href="/edit/{{x.id}}" class="btn btn-primary">Edit</a>
+            </td>
+            <td>
+                <a href="/delete/{{x.id}}" class="btn btn-primary">Delete</a>
+            </td>
+          </tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
+
+
+
+
+{% endblock body %}
+
+
+
+
+

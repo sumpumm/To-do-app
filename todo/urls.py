@@ -3,6 +3,13 @@ from django.urls import path,include
 from .views import *
 
 urlpatterns = [
-    path('',index.html)
+    path('',index),
+    path('about',about),
+    path('contact',contact),
+    path('create',create),
+    path('task/<pk>',mark_completed),
+    path('edit/<pk>',edit),
+    path('delete/<pk>',delete),
+    
     
 ]
